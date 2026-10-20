@@ -1,0 +1,30 @@
+{
+  "name": "@dprint/nix",
+  "version": "0.0.0",
+  "description": "Wasm buffer for dprint-plugin-nix.",
+  "keywords": [
+    "nix",
+    "nixfmt",
+    "code",
+    "formatter",
+    "dprint"
+  ],
+  "homepage": "https://github.com/dprint/dprint-plugin-nix#readme",
+  "bugs": {
+    "url": "https://github.com/dprint/dprint-plugin-nix/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dprint/dprint-plugin-nix.git"
+  },
+  "license": "MPL-2.0",
+  "author": "Kenichi Kamiya",
+  "main": "./index.js",
+  "types": "./index.d.ts",
+  "scripts": {
+    "test": "node index.test.js"
+  },
+  "devDependencies": {
+    "@dprint/formatter": "~0.4.0"
+  }
+}
