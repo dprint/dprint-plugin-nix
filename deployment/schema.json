@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://plugins.dprint.dev/dprint/dprint-plugin-nix/0.0.0/schema.json",
+  "type": "object",
+  "properties": {
+    "lineWidth": {
+      "description": "The width of a line the formatter will try to stay under. Note that this limit will be exceeded in some cases.",
+      "default": 100,
+      "type": "number"
+    },
+    "indentWidth": {
+      "description": "The number of spaces for an indent.",
+      "default": 2,
+      "type": "number"
+    }
+  }
+}
