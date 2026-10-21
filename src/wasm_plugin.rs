@@ -47,7 +47,7 @@ impl SyncPluginHandler<Configuration> for NixPluginHandler {
       name: env!("CARGO_PKG_NAME").to_string(),
       version: version.clone(),
       config_key: "nix".to_string(),
-      help_url: "https://github.com/dprint/dprint-plugin-nix".to_string(),
+      help_url: "https://dprint.dev/plugins/nix".to_string(),
       config_schema_url: format!(
         "https://plugins.dprint.dev/dprint/dprint-plugin-nix/{}/schema.json",
         version
