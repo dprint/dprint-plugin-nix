@@ -12,5 +12,8 @@ import { getBuffer } from "@dprint/nix";
 
 const formatter = createFromBuffer(getBuffer());
 
-console.log(formatter.formatText("file.nix", "{\nfoo = 1;\n}\n"));
+console.log(formatter.formatText({
+  filePath: "file.nix",
+  fileText: "{\nfoo = 1;\n}\n",
+}));
 ```
