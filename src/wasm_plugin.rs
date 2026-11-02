@@ -53,6 +53,7 @@ impl SyncPluginHandler<Configuration> for NixPluginHandler {
         version
       ),
       update_url: Some("https://plugins.dprint.dev/dprint/dprint-plugin-nix/latest.json".to_string()),
+      supports_range_formatting: Some(false),
     }
   }
 
