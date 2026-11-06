@@ -2,16 +2,40 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://plugins.dprint.dev/dprint/dprint-plugin-nix/0.0.0/schema.json",
   "type": "object",
+  "x-playground": {
+    "input": [
+      "{ config, lib, pkgs, ... }:",
+      "let cfg = config.services.weather-report;",
+      "in {",
+      "  options.services.weather-report = {",
+      "    enable = lib.mkEnableOption \"the weather report service\";",
+      "      port = lib.mkOption { type = lib.types.port; default = 8080; description = \"Port to listen on.\"; };",
+      "    cities = lib.mkOption { type = with lib.types; listOf str; default = [ \"Halifax\" \"Toronto\" ]; };",
+      "  };",
+      "  config = lib.mkIf cfg.enable {",
+      "    networking.firewall.allowedTCPPorts = [cfg.port];",
+      "    systemd.services.weather-report = {",
+      "      wantedBy = [ \"multi-user.target\" ]; after = [ \"network.target\" ];",
+      "      serviceConfig = { ExecStart = \"${pkgs.weather-report}/bin/weather-report --port ${toString cfg.port} ${lib.concatStringsSep \" \" cfg.cities}\";",
+      "        DynamicUser = true; Restart = \"on-failure\"; };",
+      "    };",
+      "  };",
+      "}"
+    ]
+  },
   "properties": {
     "lineWidth": {
       "description": "The width of a line the formatter will try to stay under. Note that this limit will be exceeded in some cases.",
       "default": 100,
-      "type": "number"
+      "type": "integer",
+      "minimum": 1
     },
     "indentWidth": {
       "description": "The number of spaces for an indent.",
       "default": 2,
-      "type": "number"
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 255
     }
   }
 }
